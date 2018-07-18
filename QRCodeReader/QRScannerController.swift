@@ -21,8 +21,8 @@ class QRScannerController: UIViewController ,AVCaptureMetadataOutputObjectsDeleg
     override func viewDidLoad() {
 //---------------------------------------------------------------------
         super.viewDidLoad()
-//----------Finding camera within the device---------------------------------------------
-
+//Finding camera within the device
+        
         let deviceDiscoverySession = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInDualCamera], mediaType: AVMediaType.video, position: .back)
         guard let captureDevice = deviceDiscoverySession.devices.first
             else{
@@ -37,9 +37,14 @@ class QRScannerController: UIViewController ,AVCaptureMetadataOutputObjectsDeleg
             return
         }
         
- //-----output device to capture the session--------------------------
+//output device to capture the session
         let captureMetaDataOutput = AVCaptureMetadataOutput()
         captureSession?.addOutput(captureMetaDataOutput)
+        
+// setting the captureMetaDataOutput delegate
+        captureMetaDataOutput.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
+// assigning to scan for QR
+        captureMetaDataOutput.metadataObjectTypes = [AVMetadataObject.ObjectType.qr]
         
         
         
