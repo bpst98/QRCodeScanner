@@ -37,7 +37,7 @@ class QRScannerController: UIViewController ,AVCaptureMetadataOutputObjectsDeleg
             return
         }
         
- //---------------------------------------------------------------------
+ //-----output device to capture the session--------------------------
         let captureMetaDataOutput = AVCaptureMetadataOutput()
         captureSession?.addOutput(captureMetaDataOutput)
         
