@@ -54,6 +54,10 @@ class QRScannerController: UIViewController ,AVCaptureMetadataOutputObjectsDeleg
        
         view.layer.addSublayer(videoPreviewLayer!)
         
+        captureSession?.startRunning()  //--start video capture
+        
+        
+        
         
         
         
